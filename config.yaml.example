@@ -1,0 +1,101 @@
+# ==================== 用户配置 ====================
+users:
+  - sec_uid: "MS4wLjABAAAA..."    # 用户ID，从用户主页URL获取
+    nickname: "用户昵称"           # 显示名称，便于识别
+    enabled: true                  # 是否启用该用户
+    collect_videos: true           # 是否采集作品
+    collect_comments: true         # 是否采集评论
+    collect_replies: true          # 是否采集回复
+    category_id: 2                 # 分类ID，用于区分不同用户
+
+
+# ==================== 数据库配置 ====================
+database:
+  type: sqlite                     # 数据库类型: sqlite 或 mysql
+  sqlite:
+    path: null                     # SQLite路径，null表示使用默认路径
+  mysql:                           # MySQL配置（type为mysql时生效）
+    host: 127.0.0.1
+    port: 3306
+    user: your_username
+    password: your_password
+    database: your_database
+
+# ==================== 字段配置 ====================
+# 控制各类数据保存哪些字段
+fields:
+  video:
+    - aweme_id                     # 作品ID
+    - desc                         # 作品描述
+    - create_time                  # 创建时间
+    - images                       # 图片列表
+    - video                        # 视频地址
+    - thumb                        # 缩略图
+    - category_id                  # 分类ID
+
+  comment:
+    - aweme_id                     # 作品ID
+    - cid                          # 评论ID
+    - text                         # 评论内容
+    - image_list                   # 图片列表
+    - digg_count                   # 点赞数
+    - create_time                  # 创建时间
+    - user_nickname                # 用户昵称
+    - user_unique_id               # 用户ID
+    - user_avatar                  # 用户头像
+    - sticker                      # 表情包
+    - reply_comment_total          # 回复数
+    - ip_label                     # IP归属地
+
+  reply:
+    - aweme_id                     # 作品ID
+    - cid                          # 评论ID
+    - reply_id                     # 回复ID
+    - reply_to_reply_id            # 回复的回复ID
+    - text                         # 回复内容
+    - image_list                   # 图片列表
+    - digg_count                   # 点赞数
+    - create_time                  # 创建时间
+    - user_nickname                # 用户昵称
+    - user_unique_id               # 用户ID
+    - user_avatar                  # 用户头像
+    - sticker                      # 表情包
+    - reply_to_username            # 回复的用户名
+    - ip_label                     # IP归属地
+
+# ==================== 存储配置 ====================
+# 控制各类数据是否保存到数据库和CSV文件
+storage:
+  video:
+    database: true                 # 保存到数据库
+    csv: true                      # 保存到CSV文件
+  comment:
+    database: true
+    csv: true
+  reply:
+    database: true
+    csv: true
+
+# ==================== 媒体下载配置 ====================
+# 控制各类媒体文件是否下载
+media_download:
+  video:                           # 作品相关媒体
+    images: true                   # 图片
+    videos: true                   # 视频
+    thumbs: true                   # 缩略图
+  comment:                         # 评论相关媒体
+    images: true                   # 评论图片
+    avatars: true                  # 用户头像
+    stickers: true                 # 表情包
+  reply:                           # 回复相关媒体
+    images: true
+    avatars: true
+    stickers: true
+
+# ==================== 采集配置 ====================
+crawler:
+  page_size: 30                    # 每页请求数量（1-50）
+  max_retries: 3                   # 最大重试次数
+  request_delay: 1.0               # 请求间隔（秒），避免频繁请求
+  download_threads: 3              # 媒体下载并发数
+  timeout: 60                      # 请求超时时间（秒）
