@@ -33,9 +33,9 @@ jobs:
     
     - name: Create config files from secrets
       run: |
-        echo "${{ secrets.CONFIG_YAML }}" > config.yaml
-        echo "${{ secrets.COOKIE_YAML }}" > cookie.yaml
-    
+        printf '%s' "${{ secrets.CONFIG_YAML }}" | base64 -d > config.yaml
+        printf '%s' "${{ secrets.COOKIE_YAML }}" | base64 -d > cookie.yaml
+
     - name: Check if first run
       id: check_first_run
       run: |
