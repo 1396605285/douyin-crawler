@@ -1,0 +1,8 @@
+pyyaml
+httpx
+tqdm
+PyExecJS
+pymysql
+pillow
+pillow-heif
+cookiesparser
