@@ -2,49 +2,6 @@
 
 多用户抖音数据采集工具，支持作品、评论、回复的采集与媒体下载。
 
-## 采集示例
-
-<p align="center">
-  <img src="./images/avatar.jpeg" width="120" style="border-radius: 50%;">
-</p>
-
-<p align="center">
-  <strong>张全蛋。</strong>
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/关注-69-blue">
-  <img src="https://img.shields.io/badge/粉丝-9.1万-green">
-  <img src="https://img.shields.io/badge/获赞-81.6万-red">
-</p>
-
-<table align="center">
-  <tr>
-    <td><strong>抖音号</strong></td>
-    <td>51074sorry</td>
-  </tr>
-  <tr>
-    <td><strong>IP属地</strong></td>
-    <td>四川</td>
-  </tr>
-  <tr>
-    <td><strong>性别</strong></td>
-    <td>女</td>
-  </tr>
-  <tr>
-    <td><strong>简介</strong></td>
-    <td>喜欢的达人：@张君雅1v4⁸⁰⁰⁸ 努力活到88！</td>
-  </tr>
-  <tr>
-    <td><strong>数据</strong></td>
-    <td><a href="./data/MS4wLjABAAAA2FYVN1jBWaTVasx7wXcsK0rCPfSYixt5-J1pUegQIbA">📄 采集数据</a></td>
-  </tr>
-  <tr>
-    <td><strong>媒体</strong></td>
-    <td><a href="./upload/MS4wLjABAAAA2FYVN1jBWaTVasx7wXcsK0rCPfSYixt5-J1pUegQIbA">🖼️ 图片视频</a></td>
-  </tr>
-</table>
-
 ### 数据存储路径
 
 | 数据类型 | 存储路径 |
