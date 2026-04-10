@@ -193,9 +193,27 @@ class DouyinAPI:
             client = await self._get_client()
             response = await client.get(url, params=params, headers=headers)
             response.raise_for_status()
+
+            content_type = response.headers.get('content-type', '')
+            response_text = response.text
+
+            logger.info(f"[调试] URL: {url}")
+            logger.info(f"[调试] 响应状态: {response.status_code}")
+            logger.info(f"[调试] Content-Type: {content_type}")
+            logger.info(f"[调试] 响应内容长度: {len(response_text)}")
+            logger.info(f"[调试] 响应内容前500字符: {response_text[:500] if response_text else '(空)'}")
+
+            if not response_text or not response_text.strip():
+                logger.error(f"[调试] 响应体为空!")
+                return {}
+
             return response.json()
         except httpx.HTTPStatusError as e:
             logger.error(f"HTTP错误 [{e.response.status_code}]: {url}")
+            try:
+                logger.info(f"[调试] 错误响应内容: {e.response.text[:500]}")
+            except Exception:
+                pass
             return {}
         except httpx.TimeoutException:
             logger.error(f"请求超时: {url}")
@@ -205,6 +223,12 @@ class DouyinAPI:
             return {}
         except Exception as e:
             logger.error(f"请求失败: {e}")
+            logger.info(f"[调试] 响应状态: {e.response.status_code if hasattr(e, 'response') and e.response else 'N/A'}")
+            try:
+                if hasattr(e, 'response') and e.response:
+                    logger.info(f"[调试] 错误响应内容: {e.response.text[:500]}")
+            except Exception:
+                pass
             return {}
 
     async def fetch_videos(self, sec_user_id: str, max_cursor: int = 0, count: int = 30) -> Dict:
