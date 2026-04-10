@@ -32,14 +32,9 @@ jobs:
         pip install -r requirements.txt
     
     - name: Create config files from secrets
-      env:
-        CONFIG_YAML: ${{ secrets.CONFIG_YAML }}
-        COOKIE_YAML: ${{ secrets.COOKIE_YAML }}
       run: |
-        printf '%s\n' "$CONFIG_YAML" > config.yaml
-        printf '%s\n' "$COOKIE_YAML" > cookie.yaml
-        cat config.yaml
-        cat cookie.yaml
+        echo "${{ secrets.CONFIG_YAML }}" > config.yaml
+        echo "${{ secrets.COOKIE_YAML }}" > cookie.yaml
     
     - name: Check if first run
       id: check_first_run
