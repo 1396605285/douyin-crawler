@@ -28,7 +28,7 @@
 douyin_crawler/
 ├── main.py                 # 主程序入口
 ├── config.yaml             # 配置文件 (需自行创建)
-├── cookie.txt             # Cookie配置 (需自行创建)
+├── cookie.yaml             # Cookie配置 (需自行创建)
 │
 ├── core/                   # 核心模块
 │   ├── api.py              # API请求
@@ -147,7 +147,7 @@ crawler:
 #### cookie.txt
 
 ```yaml
-your_cookie_here         # 抖音网页版Cookie，登录后获取
+cookie: "your_cookie_here"         # 抖音网页版Cookie，登录后获取
 ```
 
 **获取Cookie**: 浏览器登录抖音 → F12开发者工具 → Network → 复制请求Cookie
